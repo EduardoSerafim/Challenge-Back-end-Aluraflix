@@ -21,7 +21,7 @@ public class VideoController {
     private VideoRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<DTOListagemVideo>> teste(){
+    public ResponseEntity<List<DTOListagemVideo>> listar(){
         var videos = repository.findAll().stream().map(DTOListagemVideo::new).toList();
         return ResponseEntity.ok(videos);
     }
