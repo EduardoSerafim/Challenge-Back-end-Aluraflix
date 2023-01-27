@@ -1,5 +1,6 @@
 package br.com.aluraflix.apialuraflix.controller;
 
+import br.com.aluraflix.apialuraflix.model.video.DTOAtualizarVideo;
 import br.com.aluraflix.apialuraflix.model.video.DTOCadastroVideo;
 import br.com.aluraflix.apialuraflix.model.video.DTOExibirVideo;
 import br.com.aluraflix.apialuraflix.model.video.Video;
@@ -7,6 +8,7 @@ import br.com.aluraflix.apialuraflix.repositories.VideoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -33,6 +35,7 @@ public class VideoController {
 
 
     @PostMapping
+    @Transactional
     public ResponseEntity cadastrarVideo(@RequestBody @Valid DTOCadastroVideo dados, UriComponentsBuilder uriBuilder){
         Video video = new Video(dados);
         repository.save(video);
@@ -40,6 +43,14 @@ public class VideoController {
         var uri = uriBuilder.path("/videos/{id}").buildAndExpand(video.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new DTOExibirVideo(video));
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity atualizarVideo(@RequestBody @Valid DTOAtualizarVideo dados){
+        var videoAtualizado = repository.getReferenceById(dados.id());
+        videoAtualizado.atualizarVideo(dados);
+        return ResponseEntity.ok(new DTOExibirVideo(videoAtualizado));
     }
 
 
