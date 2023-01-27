@@ -22,4 +22,9 @@ public class Video {
     private String url;
 
 
+    public Video(DTOCadastroVideo dados) {
+        this.titulo = dados.titulo();
+        this.descricao = dados.descricao();
+        this. url = dados.url();
+    }
 }
