@@ -7,6 +7,8 @@ import br.com.aluraflix.apialuraflix.model.video.Video;
 import br.com.aluraflix.apialuraflix.repositories.VideoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +20,14 @@ import java.util.List;
 @RequestMapping(path = "/videos")
 public class VideoController {
 
+    @GetMapping
+    public ResponseEntity<Page<DTOExibirVideo>> listar(Pageable paginacao){
+        var page = repository.findAllByAtivoTrue(paginacao).map(DTOExibirVideo::new);
+        return ResponseEntity.ok(page);
+    }
+
     @Autowired
     private VideoRepository repository;
-
-    @GetMapping
-    public ResponseEntity<List<DTOExibirVideo>> listar(){
-        List<DTOExibirVideo> videos = repository.findAll().stream().map(DTOExibirVideo::new).toList();
-        return ResponseEntity.ok(videos);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity pegarVideoPorId(@PathVariable Long id){
@@ -51,6 +53,14 @@ public class VideoController {
         var videoAtualizado = repository.getReferenceById(dados.id());
         videoAtualizado.atualizarVideo(dados);
         return ResponseEntity.ok(new DTOExibirVideo(videoAtualizado));
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity excluirVideo(@PathVariable Long id){
+        Video video = repository.getReferenceById(id);
+        video.excluirVideo();
+        return ResponseEntity.noContent().build();
     }
 
 

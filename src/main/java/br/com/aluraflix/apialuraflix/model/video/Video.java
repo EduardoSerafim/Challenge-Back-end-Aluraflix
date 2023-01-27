@@ -21,11 +21,15 @@ public class Video {
     private String descricao;
     private String url;
 
+    private boolean ativo;
+
+
 
     public Video(DTOCadastroVideo dados) {
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this. url = dados.url();
+        this.ativo = true;
     }
 
     public void atualizarVideo(DTOAtualizarVideo novoVideo){
@@ -35,6 +39,10 @@ public class Video {
         if(novoVideo.descricao() != null){
             this.descricao = novoVideo.descricao();
         }
+    }
+
+    public void excluirVideo(){
+        this.ativo = false;
     }
 
 }
