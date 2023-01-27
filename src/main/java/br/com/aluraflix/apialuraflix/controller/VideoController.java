@@ -4,6 +4,7 @@ import br.com.aluraflix.apialuraflix.model.video.DTOCadastroVideo;
 import br.com.aluraflix.apialuraflix.model.video.DTOExibirVideo;
 import br.com.aluraflix.apialuraflix.model.video.Video;
 import br.com.aluraflix.apialuraflix.repositories.VideoRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class VideoController {
 
 
     @PostMapping
-    public ResponseEntity cadastrarVideo(@RequestBody DTOCadastroVideo dados, UriComponentsBuilder uriBuilder){
+    public ResponseEntity cadastrarVideo(@RequestBody @Valid DTOCadastroVideo dados, UriComponentsBuilder uriBuilder){
         Video video = new Video(dados);
         repository.save(video);
 
