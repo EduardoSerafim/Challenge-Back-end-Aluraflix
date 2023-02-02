@@ -37,6 +37,7 @@ public class CategoriaController {
     }
 
     @PostMapping
+    @Transactional
     public ResponseEntity cadastrarCategoria(@RequestBody @Valid DTOCadastroCategoria dadosCategoria, UriComponentsBuilder uriBuilder){
         Categoria categoria = new Categoria(dadosCategoria);
         repository.save(categoria);
@@ -45,11 +46,7 @@ public class CategoriaController {
 
         return ResponseEntity.created(uri).body(new DTOExibirCategoria(categoria));
 
-
-
     }
-
-
 
     @DeleteMapping("/{id}")
     @Transactional
