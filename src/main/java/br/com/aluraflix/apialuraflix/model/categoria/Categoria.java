@@ -19,6 +19,12 @@ public class Categoria {
 
     private boolean ativo;
 
+    public Categoria(DTOCadastroCategoria dadosCategoria){
+        this.titulo = dadosCategoria.titulo();
+        this.cor = dadosCategoria.cor();
+        this.ativo = true;
+    }
+
 
 
     public void excluirCategoria(){
