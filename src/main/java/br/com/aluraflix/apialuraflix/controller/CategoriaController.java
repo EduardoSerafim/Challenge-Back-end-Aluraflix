@@ -8,9 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +24,20 @@ public class CategoriaController {
     public ResponseEntity<Page<DTOExibirCategoria>> listarCategorias(Pageable paginacao){
         var page = repository.findAllByAtivoTrue(paginacao).map(DTOExibirCategoria::new);
         return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DTOExibirCategoria> pegarCategoriaPorId(@PathVariable Long id){
+        Categoria categoria = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DTOExibirCategoria(categoria));
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity excluirCategoria(@PathVariable Long id){
+        Categoria categoria = repository.getReferenceById(id);
+        categoria.excluirCategoria();
+        return ResponseEntity.noContent().build();
     }
 
 

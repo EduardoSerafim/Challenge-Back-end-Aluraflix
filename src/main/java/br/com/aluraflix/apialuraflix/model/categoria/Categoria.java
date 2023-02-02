@@ -21,4 +21,8 @@ public class Categoria {
 
 
 
+    public void excluirCategoria(){
+        this.ativo = false;
+    }
+
 }
