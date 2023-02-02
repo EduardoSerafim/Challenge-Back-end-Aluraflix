@@ -20,14 +20,14 @@ import java.util.List;
 @RequestMapping(path = "/videos")
 public class VideoController {
 
+    @Autowired
+    private VideoRepository repository;
+
     @GetMapping
-    public ResponseEntity<Page<DTOExibirVideo>> listar(Pageable paginacao){
+    public ResponseEntity<Page<DTOExibirVideo>> listarVideos(Pageable paginacao){
         var page = repository.findAllByAtivoTrue(paginacao).map(DTOExibirVideo::new);
         return ResponseEntity.ok(page);
     }
-
-    @Autowired
-    private VideoRepository repository;
 
     @GetMapping("/{id}")
     public ResponseEntity pegarVideoPorId(@PathVariable Long id){
