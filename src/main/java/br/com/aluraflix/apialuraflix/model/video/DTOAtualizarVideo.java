@@ -11,6 +11,8 @@ public record DTOAtualizarVideo(
         @Size(max = 30)
         String titulo,
 
+        Long idCategoria,
+
         @Size(max = 100)
         String descricao
 ) {
