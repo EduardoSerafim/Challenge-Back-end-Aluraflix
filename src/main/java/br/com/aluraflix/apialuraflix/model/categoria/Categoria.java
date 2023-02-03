@@ -1,5 +1,6 @@
 package br.com.aluraflix.apialuraflix.model.categoria;
 
+import br.com.aluraflix.apialuraflix.model.video.DTOAtualizarVideo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,4 +32,12 @@ public class Categoria {
         this.ativo = false;
     }
 
+    public void atualizarVideo(DTOAtualizarCategoria categoriaAtualizada) {
+        if (categoriaAtualizada.titulo() != null){
+            this.titulo = categoriaAtualizada.titulo();
+        }
+        if (categoriaAtualizada.cor() != null){
+            this.cor = categoriaAtualizada.cor();
+        }
+    }
 }

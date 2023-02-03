@@ -8,11 +8,9 @@ public record DTOAtualizarVideo(
         @NotNull
         Long id,
 
-        @NotBlank
         @Size(max = 30)
         String titulo,
 
-        @NotBlank
         @Size(max = 100)
         String descricao
 ) {

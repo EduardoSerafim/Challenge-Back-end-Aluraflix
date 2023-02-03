@@ -1,9 +1,12 @@
 package br.com.aluraflix.apialuraflix.controller;
 
 import br.com.aluraflix.apialuraflix.model.categoria.Categoria;
+import br.com.aluraflix.apialuraflix.model.categoria.DTOAtualizarCategoria;
 import br.com.aluraflix.apialuraflix.model.categoria.DTOCadastroCategoria;
 import br.com.aluraflix.apialuraflix.model.categoria.DTOExibirCategoria;
+import br.com.aluraflix.apialuraflix.model.video.DTOAtualizarVideo;
 import br.com.aluraflix.apialuraflix.model.video.DTOCadastroVideo;
+import br.com.aluraflix.apialuraflix.model.video.Video;
 import br.com.aluraflix.apialuraflix.repositories.CategoriaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +57,14 @@ public class CategoriaController {
         Categoria categoria = repository.getReferenceById(id);
         categoria.excluirCategoria();
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity atualizarCategoria(@RequestBody @Valid DTOAtualizarCategoria dados){
+       Categoria categoriaAtualizada = repository.getReferenceById(dados.id());
+       categoriaAtualizada.atualizarVideo(dados);
+       return ResponseEntity.ok(new DTOExibirCategoria(categoriaAtualizada));
     }
 
 
