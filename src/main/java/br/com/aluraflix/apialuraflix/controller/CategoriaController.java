@@ -6,8 +6,10 @@ import br.com.aluraflix.apialuraflix.model.categoria.DTOCadastroCategoria;
 import br.com.aluraflix.apialuraflix.model.categoria.DTOExibirCategoria;
 import br.com.aluraflix.apialuraflix.model.video.DTOAtualizarVideo;
 import br.com.aluraflix.apialuraflix.model.video.DTOCadastroVideo;
+import br.com.aluraflix.apialuraflix.model.video.DTOExibirVideo;
 import br.com.aluraflix.apialuraflix.model.video.Video;
 import br.com.aluraflix.apialuraflix.repositories.CategoriaRepository;
+import br.com.aluraflix.apialuraflix.repositories.VideoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -26,6 +29,8 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaRepository repository;
+    @Autowired
+    private VideoRepository videoRepository;
 
     @GetMapping
     public ResponseEntity<Page<DTOExibirCategoria>> listarCategorias(Pageable paginacao){
@@ -38,6 +43,13 @@ public class CategoriaController {
         Categoria categoria = repository.getReferenceById(id);
         return ResponseEntity.ok(new DTOExibirCategoria(categoria));
     }
+
+    @GetMapping("/{id}/videos")
+    public ResponseEntity<Page<DTOExibirVideo>> listarVideosPorCategoria(@PathVariable Long id, Pageable paginacao){
+        var page = videoRepository.findAllByIdCategoria(id,paginacao).map(DTOExibirVideo::new);
+        return ResponseEntity.ok(page);
+    }
+
 
     @PostMapping
     @Transactional
