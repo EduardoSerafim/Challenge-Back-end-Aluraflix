@@ -35,6 +35,13 @@ public class VideoController {
         return ResponseEntity.ok(new DTOExibirVideo(video));
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Page<DTOExibirVideo>> buscarVideoPorTitulo(@RequestParam(name = "search") String titulo, Pageable paginacao){
+        var page = repository.buscarPorTitulo(titulo, paginacao).map(DTOExibirVideo::new);
+        return ResponseEntity.ok(page);
+
+    }
+
 
     @PostMapping
     @Transactional
