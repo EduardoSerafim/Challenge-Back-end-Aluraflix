@@ -10,6 +10,12 @@ Projeto proposto pela alura na primeira edição do Challenge back end. Consite 
 
 A proposta é baseada em um challange de front end na qual foi desenvolvida uma plataforma de videos chamada "Aluraflix". Este challnege consiste em desenvolver um back end para essa plataforma, possuindo rotas de CRUD para vídeos e categorias.
 
+O desafio foi divido em três partes
+
+- `Semana 1 - Básico` Desenvolvimento das rotas CRUD de vídeos
+- `Semana 2 - Intermediário` Desenvolvimento das rotas CRUD de categorias + relacionamento entre as duas entidades + funcionalidades extras
+- `Semaba 3 e 4 - Avançado ` Autenticação e deploy da aplicação 
+
 ## Funcionalidades da API e rotas
 
 A API possui as principais rotas CRUD para as entidades de vídeo e categoria
@@ -31,6 +37,14 @@ A API possui as principais rotas CRUD para as entidades de vídeo e categoria
   - `PUT` Atualizar uma categoria baseado no ID (passado no corpo da requisição) `/categorias`
   - `DELETE` Deletar uma categoria baseado no ID `/categorias/{id}`
   - `GET` Listar os vídeos de uma determinada categoria baseado no ID `/categorias/{id}/videos`
+  
+## Tarefas no Trello 
+
+Para saber de forma mais detalhada como cada funcionalidade foi desenvolvida, confira os quadros do Trello usados para descrever cada tarefa a ser feita
+
+- **[Semana 1](https://trello.com/b/Mj5x6lMZ/alura-challenge-backend-semana-1)**
+- **[Semana 2](https://trello.com/b/5DavhAH7/alura-challenge-backend-semana-2)**
+- **[Semana 3 e 4]()**
   
  ## Tecnolgias usadas 
  
