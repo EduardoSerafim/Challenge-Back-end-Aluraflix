@@ -14,7 +14,7 @@ O desafio foi divido em três partes
 
 - `Semana 1 - Básico` Desenvolvimento das rotas CRUD de vídeos
 - `Semana 2 - Intermediário` Desenvolvimento das rotas CRUD de categorias + relacionamento entre as duas entidades + funcionalidades extras
-- `Semaba 3 e 4 - Avançado ` Autenticação e deploy da aplicação 
+- `Semana 3 e 4 - Avançado ` Autenticação e deploy da aplicação 
 
 ## Funcionalidades da API e rotas
 
@@ -50,7 +50,7 @@ Para saber de forma mais detalhada como cada funcionalidade foi desenvolvida, co
  
  As teconlogias usadas no desafio eram de escolha do participante 
  
- - `Java 17` !(Java)[https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/java/java_16x16.png]
+ - `Java 17` 
  - `Spring Boot 3` 
  
    - Spring Web
