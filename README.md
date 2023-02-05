@@ -2,7 +2,7 @@
 ![Logo Aluraflix](https://user-images.githubusercontent.com/64627274/216795074-cc10d754-99ee-4768-bd8b-f1e7d228b3b0.png)
 
 <hr>
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+:construction: Em Desenvolvimento :construction:
 
 ## Descrição
 
