@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class VideoController {
     private VideoRepository repository;
 
     @GetMapping
-    public ResponseEntity<Page<DTOExibirVideo>> listarVideos(Pageable paginacao){
+    public ResponseEntity<Page<DTOExibirVideo>> listarVideos(@PageableDefault(size = 5) Pageable paginacao){
         var page = repository.findAllByAtivoTrue(paginacao).map(DTOExibirVideo::new);
         return ResponseEntity.ok(page);
     }
