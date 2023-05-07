@@ -16,4 +16,10 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
 
     @Query(value = "select v from Video v where v.titulo like %?1%")
     Page<Video> buscarPorTitulo(String titulo, Pageable paginacao);
+
+    List<Video> findFirst5ByOrderByTitulo();
+
+
+//    @Query()
+//    Page<Video> buscar5Primeiros(Pageable paginacao);
 }

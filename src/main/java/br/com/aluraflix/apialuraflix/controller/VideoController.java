@@ -30,6 +30,12 @@ public class VideoController {
         return ResponseEntity.ok(page);
     }
 
+    @GetMapping("/free")
+    public ResponseEntity<List<DTOExibirVideo>> listarVideosFree(){
+        var videosFree = repository.findFirst5ByOrderByTitulo().stream().map(DTOExibirVideo::new).toList();
+        return ResponseEntity.ok(videosFree);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity pegarVideoPorId(@PathVariable Long id){
         var video = repository.getReferenceById(id);
