@@ -6,7 +6,7 @@
 
 ## Descrição
 
-Projeto proposto pela alura na primeira edição do Challenge back end. Consite em um desafio em que se deveria desenvolver uma API Rest com rotas CRUD baseado nas tarefas e regras de negócio especificadas em um quadro do Trello. Também foi feita adicionado autenticação na API, utilizando Spring Security e o padrão Jason Web Tokens
+Projeto proposto pela alura na primeira edição do Challenge back end. Consite em um desafio em que se deveria desenvolver uma API Rest com rotas CRUD baseado nas tarefas e regras de negócio especificadas em um quadro do Trello. Também foi feita autenticação na API, utilizando Spring Security e o padrão Jason Web Tokens
 
 A proposta é baseada em um challange de front end na qual foi desenvolvida uma plataforma de videos chamada "Aluraflix". Este challnege consiste em desenvolver um back end para essa plataforma, possuindo rotas de CRUD para vídeos e categorias.
 
