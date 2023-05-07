@@ -6,7 +6,7 @@
 
 ## Descrição
 
-Projeto proposto pela alura na primeira edição do Challenge back end. Consite em um desafio em que se deveria desenvolver uma API Rest com rotas CRUD baseado nas tarefas e regras de negócio especificadas em um quadro do Trello
+Projeto proposto pela alura na primeira edição do Challenge back end. Consite em um desafio em que se deveria desenvolver uma API Rest com rotas CRUD baseado nas tarefas e regras de negócio especificadas em um quadro do Trello. Também foi feita adicionado autenticação na API, utilizando Spring Security e o padrão Jason Web Tokens
 
 A proposta é baseada em um challange de front end na qual foi desenvolvida uma plataforma de videos chamada "Aluraflix". Este challnege consiste em desenvolver um back end para essa plataforma, possuindo rotas de CRUD para vídeos e categorias.
 
@@ -24,6 +24,7 @@ A API possui as principais rotas CRUD para as entidades de vídeo e categoria
 
   - `GET` Listar todos os vídeos `/videos`
   - `GET` Retornar um vídeo baseado no ID `/videos/{id}`
+  - `GET` listar vídeos que não precisam de autenticação `/videos/free`
   - `POST` adicionar um vídeo `/videos`
   - `PUT` Atualizar um vídeo baseado no ID (passado no corpo da requisição) `/videos` 
   - `DELETE` Deletar um vídeo baseado no ID `/videos/{id}` 
@@ -38,13 +39,16 @@ A API possui as principais rotas CRUD para as entidades de vídeo e categoria
   - `DELETE` Deletar uma categoria baseado no ID `/categorias/{id}`
   - `GET` Listar os vídeos de uma determinada categoria baseado no ID `/categorias/{id}/videos`
   
+- **Para usuarios**
+  - `POST` realizar login `/login`
+  
 ## Tarefas no Trello 
 
 Para saber de forma mais detalhada como cada funcionalidade foi desenvolvida, confira os quadros do Trello usados para descrever cada tarefa a ser feita
 
 - **[Semana 1](https://trello.com/b/Mj5x6lMZ/alura-challenge-backend-semana-1)**
 - **[Semana 2](https://trello.com/b/5DavhAH7/alura-challenge-backend-semana-2)**
-- **[Semana 3 e 4]()**
+- **[Semana 3 e 4](https://trello.com/b/b5sOz9Q5/alura-challenge-backend-semana-3)**
   
  ## Tecnolgias usadas 
  
@@ -57,6 +61,8 @@ Para saber de forma mais detalhada como cada funcionalidade foi desenvolvida, co
    - Spring Validation
    - Spring Data JPA
    - Lombok
+   - Spring Security
+   - Jason Web Tokens
  - `Banco de dados MySql`
  - `Postman` 
 
